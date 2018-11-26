@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Custs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cust_IdX" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tel" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Job" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Contry" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsLock" Type="bit" Nullable="false" />
+          <Property Name="Date1" Type="datetime" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="User_Add" Type="bigint" />
+          <Property Name="Date_Add" Type="datetime" />
+          <Property Name="User_Edit" Type="bigint" />
+          <Property Name="Date_Edit" Type="datetime" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Cust_Srch_Id" Type="bigint" />
+          <Property Name="hijry" Type="nvarchar(max)" />
+          <Property Name="Digit" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Owner_Name" Type="nvarchar(max)" />
+          <Property Name="Owner_Tel" Type="nvarchar(max)" />
+          <Property Name="Agent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Agent_Tel" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AddX" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Live" Type="nvarchar(max)" />
+          <Property Name="Mony" Type="nvarchar(max)" />
+          <Property Name="Accont_No" Type="nvarchar(max)" />
+          <Property Name="Date_First" Type="nvarchar(max)" />
+          <Property Name="Date_Second" Type="nvarchar(max)" />
+          <Property Name="AirCondition" Type="int" />
+          <Property Name="Water_No" Type="nvarchar(max)" />
+          <Property Name="Water_Push" Type="int" />
+          <Property Name="Lift_Name" Type="nvarchar(max)" />
+          <Property Name="Lift_Tel_Company" Type="nvarchar(max)" />
+          <Property Name="Lift_Tel" Type="nvarchar(max)" />
+          <Property Name="Lift_Time" Type="int" />
+          <Property Name="Lift_Start" Type="nvarchar(max)" />
+          <Property Name="Lift_End" Type="nvarchar(max)" />
+          <Property Name="IsLock" Type="bit" Nullable="false" />
+          <Property Name="Date1" Type="datetime" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="User_Add" Type="bigint" />
+          <Property Name="Date_Add" Type="datetime" />
+          <Property Name="User_Edit" Type="bigint" />
+          <Property Name="Date_Edit" Type="datetime" />
+          <Property Name="Agent_Id" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Add_mini" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hijry" Type="nvarchar(max)" />
+          <Property Name="Digit" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Custs_dbo_Custs_Cust_Srch_Id">
+          <End Role="Custs" Type="Self.Custs" Multiplicity="0..1" />
+          <End Role="Custs1" Type="Self.Custs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Custs1">
+              <PropertyRef Name="Cust_Srch_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="Custs" EntityType="Self.Custs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estates" EntityType="Self.Estates" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Custs_dbo_Custs_Cust_Srch_Id" Association="Self.FK_dbo_Custs_dbo_Custs_Cust_Srch_Id">
+            <End Role="Custs" EntitySet="Custs" />
+            <End Role="Custs1" EntitySet="Custs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cust">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_IdX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsLock" Type="Boolean" Nullable="false" />
+          <Property Name="Date1" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Add" Type="Int64" />
+          <Property Name="Date_Add" Type="DateTime" Precision="3" />
+          <Property Name="User_Edit" Type="Int64" />
+          <Property Name="Date_Edit" Type="DateTime" Precision="3" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_Srch_Id" Type="Int64" />
+          <Property Name="hijry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Digit" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Custs1" Relationship="Self.FK_dbo_Custs_dbo_Custs_Cust_Srch_Id" FromRole="Custs" ToRole="Custs1" />
+          <NavigationProperty Name="Cust1" Relationship="Self.FK_dbo_Custs_dbo_Custs_Cust_Srch_Id" FromRole="Custs1" ToRole="Custs" />
+        </EntityType>
+        <EntityType Name="Estate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Owner_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Agent_Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Live" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mony" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Accont_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_First" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Second" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AirCondition" Type="Int32" />
+          <Property Name="Water_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Water_Push" Type="Int32" />
+          <Property Name="Lift_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lift_Tel_Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lift_Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lift_Time" Type="Int32" />
+          <Property Name="Lift_Start" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lift_End" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsLock" Type="Boolean" Nullable="false" />
+          <Property Name="Date1" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Add" Type="Int64" />
+          <Property Name="Date_Add" Type="DateTime" Precision="3" />
+          <Property Name="User_Edit" Type="Int64" />
+          <Property Name="Date_Edit" Type="DateTime" Precision="3" />
+          <Property Name="Agent_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Add_mini" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hijry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Digit" Type="Double" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Custs_dbo_Custs_Cust_Srch_Id">
+          <End Role="Custs" Type="Self.Cust" Multiplicity="0..1" />
+          <End Role="Custs1" Type="Self.Cust" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Custs1">
+              <PropertyRef Name="Cust_Srch_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Custs" EntityType="Self.Cust" />
+          <EntitySet Name="Estates" EntityType="Self.Estate" />
+          <AssociationSet Name="FK_dbo_Custs_dbo_Custs_Cust_Srch_Id" Association="Self.FK_dbo_Custs_dbo_Custs_Cust_Srch_Id">
+            <End Role="Custs" EntitySet="Custs" />
+            <End Role="Custs1" EntitySet="Custs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="MyDBEntities1">
+          <EntitySetMapping Name="Custs">
+            <EntityTypeMapping TypeName="Models.Cust">
+              <MappingFragment StoreEntitySet="Custs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cust_IdX" ColumnName="Cust_IdX" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Contry" ColumnName="Contry" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="User_Add" ColumnName="User_Add" />
+                <ScalarProperty Name="Date_Add" ColumnName="Date_Add" />
+                <ScalarProperty Name="User_Edit" ColumnName="User_Edit" />
+                <ScalarProperty Name="Date_Edit" ColumnName="Date_Edit" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Cust_Srch_Id" ColumnName="Cust_Srch_Id" />
+                <ScalarProperty Name="hijry" ColumnName="hijry" />
+                <ScalarProperty Name="Digit" ColumnName="Digit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estates">
+            <EntityTypeMapping TypeName="Models.Estate">
+              <MappingFragment StoreEntitySet="Estates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Owner_Name" ColumnName="Owner_Name" />
+                <ScalarProperty Name="Owner_Tel" ColumnName="Owner_Tel" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Agent_Tel" ColumnName="Agent_Tel" />
+                <ScalarProperty Name="AddX" ColumnName="AddX" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Live" ColumnName="Live" />
+                <ScalarProperty Name="Mony" ColumnName="Mony" />
+                <ScalarProperty Name="Accont_No" ColumnName="Accont_No" />
+                <ScalarProperty Name="Date_First" ColumnName="Date_First" />
+                <ScalarProperty Name="Date_Second" ColumnName="Date_Second" />
+                <ScalarProperty Name="AirCondition" ColumnName="AirCondition" />
+                <ScalarProperty Name="Water_No" ColumnName="Water_No" />
+                <ScalarProperty Name="Water_Push" ColumnName="Water_Push" />
+                <ScalarProperty Name="Lift_Name" ColumnName="Lift_Name" />
+                <ScalarProperty Name="Lift_Tel_Company" ColumnName="Lift_Tel_Company" />
+                <ScalarProperty Name="Lift_Tel" ColumnName="Lift_Tel" />
+                <ScalarProperty Name="Lift_Time" ColumnName="Lift_Time" />
+                <ScalarProperty Name="Lift_Start" ColumnName="Lift_Start" />
+                <ScalarProperty Name="Lift_End" ColumnName="Lift_End" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="User_Add" ColumnName="User_Add" />
+                <ScalarProperty Name="Date_Add" ColumnName="Date_Add" />
+                <ScalarProperty Name="User_Edit" ColumnName="User_Edit" />
+                <ScalarProperty Name="Date_Edit" ColumnName="Date_Edit" />
+                <ScalarProperty Name="Agent_Id" ColumnName="Agent_Id" />
+                <ScalarProperty Name="Add_mini" ColumnName="Add_mini" />
+                <ScalarProperty Name="hijry" ColumnName="hijry" />
+                <ScalarProperty Name="Digit" ColumnName="Digit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
