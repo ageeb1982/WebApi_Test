@@ -33,17 +33,42 @@ namespace WebApi_Test
                .Add(new QueryStringMapping("type", "xml", "application/xml"));
 
 
+
+
+            //لاستخدام الأوامر 
+            // public class Cust:IXmlSerializable
+            //public void WriteXml 
+            //public void ReadXml
+            config.Formatters.XmlFormatter.UseXmlSerializer = true;
+           
+          
+            
+            
             //لتنسيق النتائج مرتبة
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+            //لجعله يقوم بعمل سيريلايز 
+            //serialize 
+            //ويتجاهل النتائج المتعلقة بالتكرار والتداخل 
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
             
-
-
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+
             );
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi2",
+                routeTemplate: "api2/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+
+            );
+
+
         }
     }
 }
